@@ -26,7 +26,8 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
       - name: Commit and Push Changes
         run: |
-          git add build/main.pdf
+          cp build/main.pdf report.pdf
+          git add report.pdf
           git commit -m "chore(release): Automatic Report Generation[skip ci]"
           git push
       
