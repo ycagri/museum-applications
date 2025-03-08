@@ -1,0 +1,33 @@
+name: Continuous Delivery Backend
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy_db:
+    name: Deploy DB
+    # https://supabase.com/docs/guides/cli/managing-environments?environment=staging
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          clean: false
+      - name: Install Latex
+        run: sudo apt-get update && sudo apt-get install -y texlive-xetex texlive-fonts-extra biber
+      - name: Compile
+        run: ./build.sh
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Commit and Push Changes
+        run: |
+          git add build/main.pdf
+          git commit -m "chore(release): Automatic Report Generation[skip ci]"
+          git push
+      
