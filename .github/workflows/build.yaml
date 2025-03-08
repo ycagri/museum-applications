@@ -1,4 +1,4 @@
-name: Continuous Delivery Backend
+name: Continuous Delivery Report
 
 permissions:
   contents: write
@@ -9,8 +9,7 @@ on:
 
 jobs:
   deploy_db:
-    name: Deploy DB
-    # https://supabase.com/docs/guides/cli/managing-environments?environment=staging
+    name: Generate Report
     runs-on: ubuntu-latest
 
     steps:
@@ -18,7 +17,7 @@ jobs:
         with:
           clean: false
       - name: Install Latex
-        run: sudo apt-get update && sudo apt-get install -y texlive-xetex texlive-fonts-extra biber
+        run: sudo apt-get update && sudo apt-get install -y texlive-xetex texlive-fonts-extra biber texlive-lang-european
       - name: Compile
         run: ./build.sh
       - name: Configure Git
