@@ -14,6 +14,8 @@
 \RequirePackage{enumitem}
 \RequirePackage{graphicx}
 \RequirePackage{titling}
+\RequirePackage{subfigure}
+\RequirePackage{wrapfig}
 
 
 \setlength{\textwidth}{6.5in}
