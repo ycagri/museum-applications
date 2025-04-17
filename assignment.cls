@@ -16,6 +16,7 @@
 \RequirePackage{titling}
 \RequirePackage{subfigure}
 \RequirePackage{wrapfig}
+\RequirePackage{float}
 
 
 \setlength{\textwidth}{6.5in}
